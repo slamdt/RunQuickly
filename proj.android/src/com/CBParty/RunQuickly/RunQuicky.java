@@ -25,15 +25,47 @@ package com.CBParty.RunQuickly;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 public class RunQuicky extends Cocos2dxActivity{
 
+	RunQuicky context;
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		context = this;
 	}
 	
     static {
          System.loadLibrary("game");
+    }
+    
+    @Override
+    public boolean onKeyDown(int keyCode,KeyEvent event) {
+    	Log.d("cocos2d-x", " on keydown");
+    	if (keyCode == KeyEvent.KEYCODE_BACK) {
+    		Log.d("cocos2d-x", " back press");
+    		new AlertDialog.Builder(this).setTitle("确定退出游戏？").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					// TODO Auto-generated method stub
+					Toast.makeText(context, "你退出了游戏", Toast.LENGTH_SHORT).show();
+					System.exit(0);
+				}
+			}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+				
+				@Override
+				public void onClick(DialogInterface arg0, int arg1) {
+					// TODO Auto-generated method stub
+					Toast.makeText(context, "你取消了退出游戏", Toast.LENGTH_SHORT).show();			
+				}
+			}).show();
+    	}
+		return isReallyNeedPause;
     }
 }

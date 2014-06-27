@@ -1,0 +1,7 @@
+.settings
+.classpath
+bin/
+gen/
+obj/
+project.xcworkspace
+xcuserdata

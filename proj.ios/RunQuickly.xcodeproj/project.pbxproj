@@ -284,6 +284,7 @@
 		F0849E45195AD023008B3860 /* Slot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0849D66195AD023008B3860 /* Slot.cpp */; };
 		F0849E46195AD023008B3860 /* SlotData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0849D68195AD023008B3860 /* SlotData.cpp */; };
 		F0849E47195AD023008B3860 /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0849D6A195AD023008B3860 /* spine-cocos2dx.cpp */; };
+		F0B9B23819988FE20029C269 /* InputBg.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B9B23719988FE20029C269 /* InputBg.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -887,6 +888,7 @@
 		F0849D6A195AD023008B3860 /* spine-cocos2dx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "spine-cocos2dx.cpp"; sourceTree = "<group>"; };
 		F0849D6B195AD023008B3860 /* spine-cocos2dx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "spine-cocos2dx.h"; sourceTree = "<group>"; };
 		F0849D6C195AD023008B3860 /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
+		F0B9B23719988FE20029C269 /* InputBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InputBg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1129,6 +1131,7 @@
 		F02F1CF9195A8105002F7D2A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F0B9B23719988FE20029C269 /* InputBg.png */,
 				F02F1CFA195A8105002F7D2A /* CloseNormal.png */,
 				F02F1CFB195A8105002F7D2A /* CloseSelected.png */,
 				F02F1CFC195A8105002F7D2A /* HelloWorld.png */,
@@ -2228,6 +2231,7 @@
 				F02F1E1E195A8184002F7D2A /* iTunesArtwork in Resources */,
 				F0849D92195AD023008B3860 /* ChangeLog in Resources */,
 				F0849D93195AD023008B3860 /* CMakeLists.txt in Resources */,
+				F0B9B23819988FE20029C269 /* InputBg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

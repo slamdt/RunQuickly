@@ -65,7 +65,9 @@ public class RunQuicky extends Cocos2dxActivity{
 					Toast.makeText(context, "你取消了退出游戏", Toast.LENGTH_SHORT).show();			
 				}
 			}).show();
+    		return true;
+    	} else {
+    		return super.onKeyDown(keyCode, event);
     	}
-		return isReallyNeedPause;
     }
 }

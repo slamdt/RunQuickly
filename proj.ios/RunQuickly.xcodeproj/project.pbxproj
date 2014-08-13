@@ -284,6 +284,8 @@
 		F0849E45195AD023008B3860 /* Slot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0849D66195AD023008B3860 /* Slot.cpp */; };
 		F0849E46195AD023008B3860 /* SlotData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0849D68195AD023008B3860 /* SlotData.cpp */; };
 		F0849E47195AD023008B3860 /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0849D6A195AD023008B3860 /* spine-cocos2dx.cpp */; };
+		F098EB98199B4C0600CAAAB4 /* ShitLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F098EB96199B4C0600CAAAB4 /* ShitLayer.cpp */; };
+		F098EBA1199B611600CAAAB4 /* CBPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F098EB9F199B611600CAAAB4 /* CBPlatform.cpp */; };
 		F0B9B23819988FE20029C269 /* InputBg.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B9B23719988FE20029C269 /* InputBg.png */; };
 /* End PBXBuildFile section */
 
@@ -888,6 +890,15 @@
 		F0849D6A195AD023008B3860 /* spine-cocos2dx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "spine-cocos2dx.cpp"; sourceTree = "<group>"; };
 		F0849D6B195AD023008B3860 /* spine-cocos2dx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "spine-cocos2dx.h"; sourceTree = "<group>"; };
 		F0849D6C195AD023008B3860 /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
+		F098EB96199B4C0600CAAAB4 /* ShitLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShitLayer.cpp; sourceTree = "<group>"; };
+		F098EB97199B4C0600CAAAB4 /* ShitLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShitLayer.h; sourceTree = "<group>"; };
+		F098EB9F199B611600CAAAB4 /* CBPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPlatform.cpp; sourceTree = "<group>"; };
+		F098EBA0199B611600CAAAB4 /* CBPlatform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBPlatform.h; sourceTree = "<group>"; };
+		F098EBA2199B666200CAAAB4 /* CBPlatformAndroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPlatformAndroid.cpp; sourceTree = "<group>"; };
+		F098EBA6199B6BD600CAAAB4 /* org_cbparty_jnilib_CBNativeInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = org_cbparty_jnilib_CBNativeInterface.cpp; sourceTree = "<group>"; };
+		F098EBA7199B6BD700CAAAB4 /* org_cbparty_jnilib_CBNativeInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cbparty_jnilib_CBNativeInterface.h; sourceTree = "<group>"; };
+		F0B87077199A225800A1AEA1 /* cb_jni.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cb_jni.cpp; sourceTree = "<group>"; };
+		F0B87078199A225800A1AEA1 /* cb_jni.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cb_jni.h; sourceTree = "<group>"; };
 		F0B9B23719988FE20029C269 /* InputBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InputBg.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -970,6 +981,7 @@
 		F02F1A7F195A8104002F7D2A /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				F098EB94199B4B3600CAAAB4 /* SceneLayers */,
 				F06D42DA195AA675001F0A2C /* MainEntrance */,
 			);
 			name = Classes;
@@ -979,6 +991,7 @@
 		F02F1A84195A8104002F7D2A /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				F0B87074199A216C00A1AEA1 /* cb-common */,
 				F0849B40195AD020008B3860 /* cocos2dx */,
 				F0849CA9195AD022008B3860 /* CocosDenshion */,
 				F0849CBC195AD022008B3860 /* extensions */,
@@ -2148,6 +2161,53 @@
 			path = spine;
 			sourceTree = "<group>";
 		};
+		F098EB94199B4B3600CAAAB4 /* SceneLayers */ = {
+			isa = PBXGroup;
+			children = (
+				F098EB95199B4B3600CAAAB4 /* ShitLayer */,
+			);
+			path = SceneLayers;
+			sourceTree = "<group>";
+		};
+		F098EB95199B4B3600CAAAB4 /* ShitLayer */ = {
+			isa = PBXGroup;
+			children = (
+				F098EB96199B4C0600CAAAB4 /* ShitLayer.cpp */,
+				F098EB97199B4C0600CAAAB4 /* ShitLayer.h */,
+			);
+			path = ShitLayer;
+			sourceTree = "<group>";
+		};
+		F098EB9E199B610300CAAAB4 /* platformImp */ = {
+			isa = PBXGroup;
+			children = (
+				F098EB9F199B611600CAAAB4 /* CBPlatform.cpp */,
+				F098EBA0199B611600CAAAB4 /* CBPlatform.h */,
+				F098EBA2199B666200CAAAB4 /* CBPlatformAndroid.cpp */,
+			);
+			path = platformImp;
+			sourceTree = "<group>";
+		};
+		F0B87074199A216C00A1AEA1 /* cb-common */ = {
+			isa = PBXGroup;
+			children = (
+				F098EB9E199B610300CAAAB4 /* platformImp */,
+				F0B87075199A216C00A1AEA1 /* androidJni */,
+			);
+			path = "cb-common";
+			sourceTree = "<group>";
+		};
+		F0B87075199A216C00A1AEA1 /* androidJni */ = {
+			isa = PBXGroup;
+			children = (
+				F0B87077199A225800A1AEA1 /* cb_jni.cpp */,
+				F0B87078199A225800A1AEA1 /* cb_jni.h */,
+				F098EBA6199B6BD600CAAAB4 /* org_cbparty_jnilib_CBNativeInterface.cpp */,
+				F098EBA7199B6BD700CAAAB4 /* org_cbparty_jnilib_CBNativeInterface.h */,
+			);
+			path = androidJni;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2491,6 +2551,8 @@
 				F0849E45195AD023008B3860 /* Slot.cpp in Sources */,
 				F0849E46195AD023008B3860 /* SlotData.cpp in Sources */,
 				F0849E47195AD023008B3860 /* spine-cocos2dx.cpp in Sources */,
+				F098EB98199B4C0600CAAAB4 /* ShitLayer.cpp in Sources */,
+				F098EBA1199B611600CAAAB4 /* CBPlatform.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,40 +11,30 @@
 
 #include "cocos2d.h"
 #include "CCEditBox.h"
+#include "CBPlatform.h"
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
 #define WINSIZE GameLayer::instance()->winSize
 #define FONT_NAME "FZYHJW--GB1-0" 
 
-class GameLayer : public CCLayer, public CCEditBoxDelegate {
+enum LAYER_TYPE{
+    SHIT_LAYER = 1,
+};
+
+class GameLayer : public CCLayer{
 public:
     static CCScene* scene();
     static GameLayer* instance();
     bool init();
+    
+    void CreateLayer(LAYER_TYPE type);
     // 得到屏幕尺寸
     CCSize winSize;
-    void beginShit();
-    void endShit();
-    void IncreateInner();
-    void makeAnim(const char* str,int index);
-    void aniEnd(CCObject *pSender);
     
-    virtual void editBoxEditingDidBegin(CCEditBox* editBox);
-    virtual void editBoxEditingDidEnd(CCEditBox* editBox);
-    virtual void editBoxTextChanged(CCEditBox* editBox, const std::string& text);
-    virtual void editBoxReturn(CCEditBox* editBox);
+    //返回键调用函数
+    virtual void keyBackClicked();
 private:
-    CCEditBox *nameEditbix, *monthEditBox;
-    CCLabelTTF *monyEarn;
-    double monthPay;
-    const char* name;
-    double rate;
-    bool gameBegin;
-    enum {
-        TYPE_NAME = 1,
-        TYPE_MONTH
-    }EDITBOX_TYPE;
 };
 
 #endif /* defined(__RunQuickly__GameLayer__) */

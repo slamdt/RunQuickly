@@ -13,6 +13,7 @@ endef
 
 #traverse Classes Directory
 ALLFILES = $(call walk, $(LOCAL_PATH)/../../Classes)
+ALLFILES += $(call walk, $(LOCAL_PATH)/../../libs/cb-common)
 
 FILE_LIST := hellocpp/main.cpp
 FILE_LIST += $(filter %.cpp, $(ALLFILES))
@@ -20,6 +21,7 @@ FILE_LIST += $(filter %.cc, $(ALLFILES))
 FILE_LIST += $(filter %.c, $(ALLFILES))
 
 FILE_INCLUDES := $(shell find $(LOCAL_PATH)/../../Classes -type d)
+FILE_INCLUDES += $(shell find $(LOCAL_PATH)/../../libs/cb-common -type d)
 FILE_INCLUDES += $(shell find $(LOCAL_PATH)/../../libs/cocos2dx/cocos2dx/platform/third_party/android -type d)
 
 LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)

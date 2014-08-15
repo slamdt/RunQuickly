@@ -7,11 +7,15 @@
 //
 
 #include "ShitLayer.h"
+#include "CBShareManager.h"
 
 
 const char* arry[6] = {"拉","屎","都","能","赚","钱"};
 
 bool ShitLayer::init() {
+    if (!CBScreenLayer::init()) {
+        return false;
+    }
     monthPay = 0.0f;
     rate = 0.0f;
     name = "";
@@ -70,6 +74,7 @@ bool ShitLayer::init() {
     endShitBtn->setPosition(ccp(WINSIZE.width * 0.7, WINSIZE.height * 0.4));
     
     CCMenu *menu = CCMenu::create(beginShitBtn,endShitBtn,NULL);
+    menu->setTouchPriority(getTouchPriority());
     menu->setPosition(ccp(0, 0));
     this->addChild(menu);
     
@@ -103,7 +108,8 @@ void ShitLayer::endShit() {
         return;
     }
     this->unscheduleAllSelectors();
-    CCMessageBox(CCString::createWithFormat("你这次拉屎赚了%s元，真牛逼！",monyEarn->getString())->getCString(), "result");
+//    CCMessageBox(CCString::createWithFormat("你这次拉屎赚了%s元，真牛逼！",monyEarn->getString())->getCString(), "result");
+    CBShareManager::shared()->shotScreen();
     gameBegin = false;
 }
 
@@ -118,6 +124,7 @@ void ShitLayer::IncreateInner() {
 
 void ShitLayer::makeAnim(const char *str,int index) {
     CCLabelTTF* word = CCLabelTTF::create(str, FONT_NAME, 30);
+    word->setColor(ccc3(0, 0, 0));
     int randomDir = rand() % 2 == 0 ? 1 : -1;
     float disRata = (rand() % 3 + 1.0f) / 10.0f;
     CCPoint pos1 = ccp(WINSIZE.width * 0.5, WINSIZE.height * 0.5);

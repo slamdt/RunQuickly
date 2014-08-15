@@ -11,7 +11,7 @@
 
 #include "GameLayer.h"
 
-class ShitLayer : public CCLayer ,public CCEditBoxDelegate{
+class ShitLayer : public CBScreenLayer,public CCEditBoxDelegate{
 public:
     CREATE_FUNC(ShitLayer);
     virtual bool init();

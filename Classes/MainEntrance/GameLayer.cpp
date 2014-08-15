@@ -8,7 +8,8 @@
 
 #include "GameLayer.h"
 #include "ShitLayer.h"
-static GameLayer* _layer;
+
+GameLayer* GameLayer::_layer = NULL;
 
 GameLayer* GameLayer::instance() {
     if (_layer == NULL) {
@@ -25,8 +26,14 @@ CCScene* GameLayer::scene() {
     return scene;
 }
 
-bool GameLayer::init() {    
+bool GameLayer::init() {
+    if (!CBLayer::init()) {
+        return false;
+    }
     winSize = CCDirector::sharedDirector()->getWinSize();
+    CCLayerColor *yellowBtom = CCLayerColor::create(ccc4(200, 160, 0, 255), winSize.width, winSize.height);
+    this->addChild(yellowBtom);
+    
     //注册返回键监听
     cocos2d::CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(this);
     CreateLayer(SHIT_LAYER);

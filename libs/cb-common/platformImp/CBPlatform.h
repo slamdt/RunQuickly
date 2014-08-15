@@ -14,6 +14,8 @@
 class CBPlatformImpl {
 public:
     virtual void quitGame() {};
+    virtual void sharedResult(const char* fileName, const char* tips) {};
+    virtual std::string MakeFilePath(std::string cocos2dFilePath) {return "";};
 };
 
 class CBPlatform {
@@ -26,7 +28,8 @@ private:
 class CBPlatformAndroid : public CBPlatformImpl {
 public:
     virtual void quitGame();
-    
+    virtual void sharedResult(const char* fileName, const char* tips);
+    virtual std::string MakeFilePath(std::string cocos2dFilePath);    
 };
 
 #endif /* defined(__RunQuickly__CBPlatform__) */

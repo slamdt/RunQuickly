@@ -12,17 +12,22 @@
 #include "cocos2d.h"
 #include "CCEditBox.h"
 #include "CBPlatform.h"
+#include "CBCommon.h"
+#include "CBLayer.h"
+#include "CBPopUpLayer.h"
+#include "CBScreenLayer.h"
 using namespace cocos2d;
 using namespace cocos2d::extension;
 
 #define WINSIZE GameLayer::instance()->winSize
+#define GameLayer_ GameLayer::instance()
 #define FONT_NAME "FZYHJW--GB1-0" 
 
 enum LAYER_TYPE{
     SHIT_LAYER = 1,
 };
 
-class GameLayer : public CCLayer{
+class GameLayer : public CBLayer{
 public:
     static CCScene* scene();
     static GameLayer* instance();
@@ -34,6 +39,7 @@ public:
     
     //返回键调用函数
     virtual void keyBackClicked();
+    static GameLayer* _layer;
 private:
 };
 

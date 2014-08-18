@@ -33,6 +33,7 @@ public class RunQuicky extends Cocos2dxActivity{
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		CBNativeInterface.activity = this;
+		CBNativeInterface.onCreate();
 	}
 	
     static {

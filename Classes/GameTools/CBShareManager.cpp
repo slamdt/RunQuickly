@@ -44,10 +44,12 @@ bool shotScreenLayer::init() {
     textureNode->setFlipY(true);//上下（竖直）翻转
     this->addChild(textureNode);
     
-    CCMenuItemLabel *shareBtn = CCMenuItemLabel::create(CCLabelTTF::create("分享", FONT_NAME, 30), this, menu_selector(shotScreenLayer::shareBtnDown));
+    CCMenuItemLabel *shareBtn = CCMenuItemLabel::create(CCLabelTTF::create("分享", FONT_NAME, 20), this, menu_selector(shotScreenLayer::shareBtnDown));
+    shareBtn->setColor(ccc3(255, 0, 0));
     shareBtn->setPosition(ccp(winsize.width * 0.4, winsize.height * 0.2));
     
-    CCMenuItemLabel *backBtn = CCMenuItemLabel::create(CCLabelTTF::create("返回", FONT_NAME, 30),this,menu_selector(shotScreenLayer::back));
+    CCMenuItemLabel *backBtn = CCMenuItemLabel::create(CCLabelTTF::create("返回", FONT_NAME, 20),this,menu_selector(shotScreenLayer::back));
+    backBtn->setColor(ccc3(255, 0, 0));
     backBtn->setPosition(ccp(winsize.width * 0.6, winsize.height * 0.2));
     
     CCMenu *menu = CCMenu::create(shareBtn,backBtn,NULL);
@@ -71,4 +73,5 @@ void shotScreenLayer::shareBtnDown() {
 
 void shotScreenLayer::back() {
     this->removeFromParentAndCleanup(true);
+    CBPlatform::shared()->showPopAd();
 }

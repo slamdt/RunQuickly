@@ -21,6 +21,7 @@ public:
     void IncreateInner();
     void makeAnim(const char* str,int index);
     void aniEnd(CCObject *pSender);
+    void moreGameBtnDown();
     
     virtual void editBoxEditingDidBegin(CCEditBox* editBox);
     virtual void editBoxEditingDidEnd(CCEditBox* editBox);
@@ -34,6 +35,8 @@ private:
     const char* name;
     double rate;
     bool gameBegin;
+    CCMenuItemLabel *moreGameBtn;
+    CCNode *wordsNode;
     enum EDITBOX_TYPE{
         TYPE_NAME = 1,
         TYPE_MONTH

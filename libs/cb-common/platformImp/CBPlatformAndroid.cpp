@@ -24,3 +24,11 @@ void CBPlatformAndroid::sharedResult(const char *fileName, const char *tips) {
 std::string CBPlatformAndroid::MakeFilePath(std::string cocos2dFilePath) {
     return cpCallJavaSimple("MakeFilePath", cocos2dFilePath);
 }
+
+void CBPlatformAndroid::showAdWall() {
+    cpCallJavaSimple("showAdWall", "");
+}
+
+void CBPlatformAndroid::showPopAd() {
+    cpCallJavaSimple("showPopAd", "");
+}

@@ -20,17 +20,18 @@ bool ShitLayer::init() {
     rate = 0.0f;
     name = "";
     gameBegin = false;
+    wordsNode = NULL;
     
-    CCLabelTTF *title = CCLabelTTF::create("带薪拉屎大赛", FONT_NAME, 40);
+    CCLabelTTF *title = CCLabelTTF::create("带薪嗯嗯大赛", FONT_NAME, 30);
     title->setPosition(ccp(WINSIZE.width/2,WINSIZE.height * 0.95));
     this->addChild(title);
     
-    CCLabelTTF *tips = CCLabelTTF::create("请填入参赛者个人信息:", FONT_NAME, 30);
-    tips->setPosition(ccp(WINSIZE.width * 0.3,WINSIZE.height * 0.8));
+    CCLabelTTF *tips = CCLabelTTF::create("请填入参赛者个人信息:", FONT_NAME, 20);
+    tips->setPosition(ccp(WINSIZE.width * 0.4,WINSIZE.height * 0.8));
     this->addChild(tips);
     
     CCLabelTTF *nameTip = CCLabelTTF::create("姓名", FONT_NAME, 20);
-    nameTip->setPosition(ccp(WINSIZE.width * 0.1,WINSIZE.height * 0.7));
+    nameTip->setPosition(ccp(WINSIZE.width * 0.2,WINSIZE.height * 0.65));
     this->addChild(nameTip);
     
     CCScale9Sprite *nameEditbixBg = CCScale9Sprite::create("InputBg.png");
@@ -38,18 +39,18 @@ bool ShitLayer::init() {
     nameEditbix->setTouchPriority(getTouchPriority());
     nameEditbix->setFontName(FONT_NAME);
     nameEditbix->setFontColor(ccc3(0,0,0));
-    nameEditbix->setFontSize(20);
+    nameEditbix->setFontSize(15);
     nameEditbix->setInputMode(kEditBoxInputModeAny);
     nameEditbix->setDelegate(this);
-    nameEditbix->setPosition(ccp(WINSIZE.width * 0.5, WINSIZE.height * 0.7));
+    nameEditbix->setPosition(ccp(WINSIZE.width * 0.55, nameTip->getPositionY()));
     nameEditbix->setPlaceholderFontName(FONT_NAME);
-    nameEditbix->setPlaceHolder("input your name ，man");
+    nameEditbix->setPlaceHolder("input your name");
     nameEditbix->setPlaceholderFontColor(ccc3(0, 0, 0));
     nameEditbix->setTag(TYPE_NAME);
     this->addChild(nameEditbix);
     
     CCLabelTTF *monthTip = CCLabelTTF::create("月薪", FONT_NAME, 20);
-    monthTip->setPosition(ccp(WINSIZE.width * 0.1,WINSIZE.height * 0.6));
+    monthTip->setPosition(ccp(WINSIZE.width * 0.2,WINSIZE.height * 0.55));
     this->addChild(monthTip);
     
     CCScale9Sprite *monthEditbixBg = CCScale9Sprite::create("InputBg.png");
@@ -57,32 +58,35 @@ bool ShitLayer::init() {
     monthEditBox->setTouchPriority(getTouchPriority());
     monthEditBox->setFontName(FONT_NAME);
     monthEditBox->setFontColor(ccc3(0,0,0));
-    monthEditBox->setFontSize(20);
+    monthEditBox->setFontSize(15);
     monthEditBox->setInputMode(kEditBoxInputModeAny);
     monthEditBox->setDelegate(this);
-    monthEditBox->setPosition(ccp(WINSIZE.width * 0.5, WINSIZE.height * 0.6));
+    monthEditBox->setPosition(ccp(WINSIZE.width * 0.55, monthTip->getPositionY()));
     monthEditBox->setPlaceholderFontName(FONT_NAME);
-    monthEditBox->setPlaceHolder("input your month pay ，man");
+    monthEditBox->setPlaceHolder("input you month pay");
     monthEditBox->setPlaceholderFontColor(ccc3(0, 0, 0));
     monthEditBox->setTag(TYPE_MONTH);
     this->addChild(monthEditBox);
     
-    CCMenuItemLabel *beginShitBtn = CCMenuItemLabel::create(CCLabelTTF::create("开始拉屎", FONT_NAME, 30), this, menu_selector(ShitLayer::beginShit));
+    CCMenuItemLabel *beginShitBtn = CCMenuItemLabel::create(CCLabelTTF::create("开始嗯嗯", FONT_NAME, 20), this, menu_selector(ShitLayer::beginShit));
     beginShitBtn->setPosition(ccp(WINSIZE.width * 0.3, WINSIZE.height * 0.4));
     
-    CCMenuItemLabel *endShitBtn = CCMenuItemLabel::create(CCLabelTTF::create("拉完了", FONT_NAME, 30), this, menu_selector(ShitLayer::endShit));
+    CCMenuItemLabel *endShitBtn = CCMenuItemLabel::create(CCLabelTTF::create("拉完了", FONT_NAME, 20), this, menu_selector(ShitLayer::endShit));
     endShitBtn->setPosition(ccp(WINSIZE.width * 0.7, WINSIZE.height * 0.4));
     
-    CCMenu *menu = CCMenu::create(beginShitBtn,endShitBtn,NULL);
+    moreGameBtn = CCMenuItemLabel::create(CCLabelTTF::create("更多游戏", FONT_NAME, 30), this, menu_selector(ShitLayer::moreGameBtnDown));
+    moreGameBtn->setPosition(ccp(WINSIZE.width * 0.5, WINSIZE.height * 0.15));
+    
+    CCMenu *menu = CCMenu::create(beginShitBtn,endShitBtn,moreGameBtn,NULL);
     menu->setTouchPriority(getTouchPriority());
     menu->setPosition(ccp(0, 0));
     this->addChild(menu);
     
-    CCLabelTTF *earnTip = CCLabelTTF::create("你已经赚了RMB(元):", FONT_NAME, 40);
+    CCLabelTTF *earnTip = CCLabelTTF::create("你已经赚了RMB(元):", FONT_NAME, 20);
     earnTip->setPosition(ccp(WINSIZE.width * 0.4, WINSIZE.height * 0.3));
     this->addChild(earnTip);
     
-    monyEarn = CCLabelTTF::create("0", FONT_NAME, 40);
+    monyEarn = CCLabelTTF::create("0", FONT_NAME, 20);
     monyEarn->cocos2d::CCNode::setAnchorPoint(ccp(0, 0));
     monyEarn->setPosition(ccp(earnTip->getContentSize().width, 0));
     earnTip->addChild(monyEarn);
@@ -98,18 +102,28 @@ void ShitLayer::beginShit() {
         rate = monthPay / 22 / 24 / 60 / 60;
         CCLOG("rate is %f ",rate);
         gameBegin = true;
+        if (wordsNode == NULL) {
+            wordsNode = CCNode::create();
+            this->addChild(wordsNode);
+        }
         this->schedule(schedule_selector(ShitLayer::IncreateInner), 1);
     }
 }
 
 void ShitLayer::endShit() {
     if (!gameBegin) {
-        CCMessageBox("还未开始怎能结束", "请先拉屎");
+        CCMessageBox("还未开始怎能结束", "请先嗯嗯");
         return;
     }
     this->unscheduleAllSelectors();
 //    CCMessageBox(CCString::createWithFormat("你这次拉屎赚了%s元，真牛逼！",monyEarn->getString())->getCString(), "result");
+    
+    wordsNode->removeFromParentAndCleanup(true);
+    wordsNode = NULL;
+    moreGameBtn->setVisible(false);
+    
     CBShareManager::shared()->shotScreen();
+    moreGameBtn->setVisible(true);
     gameBegin = false;
 }
 
@@ -123,7 +137,7 @@ void ShitLayer::IncreateInner() {
 }
 
 void ShitLayer::makeAnim(const char *str,int index) {
-    CCLabelTTF* word = CCLabelTTF::create(str, FONT_NAME, 30);
+    CCLabelTTF* word = CCLabelTTF::create(str, FONT_NAME, 20);
     word->setColor(ccc3(0, 0, 0));
     int randomDir = rand() % 2 == 0 ? 1 : -1;
     float disRata = (rand() % 3 + 1.0f) / 10.0f;
@@ -136,7 +150,7 @@ void ShitLayer::makeAnim(const char *str,int index) {
     bezier.endPosition = pos3;
     CCBezierTo *beziaTo = CCBezierTo::create(1, bezier);
     word->setPosition(pos1);
-    this->addChild(word);
+    wordsNode->addChild(word);
     word->runAction(CCRotateBy::create(100, 3600));
     word->runAction(CCSequence::create(CCDelayTime::create(index * 0.1f),beziaTo,CCCallFuncN::create(this, callfuncN_selector(ShitLayer::aniEnd)),NULL));
 }
@@ -177,4 +191,8 @@ void ShitLayer::editBoxReturn(cocos2d::extension::CCEditBox *editBox) {
         name = editBox->getText();
         CCLOG("name is %s", name);
     }
+}
+
+void ShitLayer::moreGameBtnDown() {
+    CBPlatform::shared()->showAdWall();
 }

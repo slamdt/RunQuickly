@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import cn.waps.AppConnect;
 
 public class CBNativeInterface {
 	public static final String DEBUG_TAG = "cocos2d-x debug info";
@@ -31,6 +32,7 @@ public class CBNativeInterface {
 							public void onClick(DialogInterface arg0, int arg1) {
 								// TODO Auto-generated method stub
 								CBNativeInterface.CallC("QuitGameSure", "");	
+								AppConnect.getInstance(CBNativeInterface.activity).close();
 							}
 						}).setNegativeButton("取消", new DialogInterface.OnClickListener() {
 							
@@ -81,11 +83,46 @@ public class CBNativeInterface {
 					Log.d(DEBUG_TAG," 文件目录已存在");
 				}
 				return sdDir;
+			} else if (method.equals("showAdWall")) {
+				CBNativeInterface.activity.runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						AppConnect.getInstance(CBNativeInterface.activity).showGameOffers(CBNativeInterface.activity);
+					}
+					
+				});
+			} else if (method.equals("showPopAd")) {
+				CBNativeInterface.activity.runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						if (AppConnect.getInstance(CBNativeInterface.activity).hasPopAd(CBNativeInterface.activity)) {
+							AppConnect.getInstance(CBNativeInterface.activity).showPopAd(CBNativeInterface.activity);
+						}
+					}
+					
+				});
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
+	}
+	
+	public static void onCreate() {
+		CBNativeInterface.activity.runOnUiThread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				AppConnect.getInstance("1e1db012fc880e5e278fca20bffc737c", "360", CBNativeInterface.activity);
+				AppConnect.getInstance(CBNativeInterface.activity).initPopAd(CBNativeInterface.activity);
+			}
+			
+		});
 	}
 	
 	public static native String CallC(String method, String param);

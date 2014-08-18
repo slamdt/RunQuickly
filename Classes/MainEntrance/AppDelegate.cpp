@@ -28,7 +28,56 @@ bool AppDelegate::applicationDidFinishLaunching()
 {
     // initialize director
     CCDirector *pDirector = CCDirector::sharedDirector();
-    pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
+    CCEGLView *pEglView = CCEGLView::sharedOpenGLView();
+    //===================多分辨率处理========================
+    pDirector->setOpenGLView(pEglView);
+    pDirector->setContentScaleFactor(2);
+    CCSize winSize = pDirector->getWinSize();
+    CCLOG("original frame size:%f, %f", pEglView->getFrameSize().width, pEglView->getFrameSize().height);
+    CCLOG("winsize is : %f,%f",winSize.width,winSize.height);
+    
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS 
+    if (getTargetPlatform()== kTargetIpad) {
+        pEglView->setDesignResolutionSize(320, 480, kResolutionShowAll);
+        
+    } else {
+        if(pEglView->getFrameSize().height == 1136) {
+            pEglView->setDesignResolutionSize(320, 568, kResolutionShowAll);
+        }
+        else {
+            pEglView->setDesignResolutionSize(320, 480, kResolutionShowAll);
+        }
+    }
+#else
+    int ratioLow = 1500;
+    int ratioHigh = 1775;
+    
+    int targetHeight = pEglView->getFrameSize().height;
+    int targetWidth = pEglView->getFrameSize().width;
+    
+    if (targetWidth * ratioHigh < targetHeight * 1000) {
+        CCLog("taller than iPhone 5");
+        pEglView->setDesignResolutionSize(320, 568, kResolutionShowAll);
+    } else if (targetWidth * ratioHigh == targetHeight * 1000) {
+        CCLog("same ratio with iPhone 5");
+        pEglView->setDesignResolutionSize(320, 568, kResolutionShowAll);
+    } else if (targetWidth * ratioLow == targetHeight * 1000) {
+        CCLog("same ratio with iPhone 4");
+        pEglView->setDesignResolutionSize(320, 480, kResolutionShowAll);
+    } else if (targetWidth * ratioLow > targetHeight * 1000) {
+        CCLog("wider than iPhone 4");
+        pEglView->setDesignResolutionSize(320,
+                                          480, kResolutionExactFit);
+    } else {
+        CCLog("between iPhone 4 and iPhone 5");
+        pEglView->setDesignResolutionSize(320,
+                                          pEglView->getFrameSize().height / pEglView->getFrameSize().width * 320, kResolutionShowAll);
+    }
+#endif
+    CCLOG("new frame size:%f, %f", CCEGLView::sharedOpenGLView()->getFrameSize().width, CCEGLView::sharedOpenGLView()->getFrameSize().height);
+    
+    CCDirector::sharedDirector()->setProjection(kCCDirectorProjection2D);
+    CCDirector::sharedDirector()->setDepthTest(false);
 
     // turn on display FPS
     pDirector->setDisplayStats(false);

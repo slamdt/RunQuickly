@@ -32,3 +32,11 @@ void CBPlatformAndroid::showAdWall() {
 void CBPlatformAndroid::showPopAd() {
     cpCallJavaSimple("showPopAd", "");
 }
+
+void CBPlatformAndroid::enterBackGround(const char* method) {
+    cpCallJavaSimple("enterBackGround", method);
+}
+
+void CBPlatformAndroid::enterForeGround() {
+    cpCallJavaSimple("enterForeGround", "");
+}

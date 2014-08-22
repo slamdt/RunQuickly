@@ -11,7 +11,7 @@
 
 #include "GameLayer.h"
 
-class ShitLayer : public CBScreenLayer,public CCEditBoxDelegate{
+class ShitLayer : public CBScreenLayer,public CCEditBoxDelegate, public CBPlatformDelegate{
 public:
     CREATE_FUNC(ShitLayer);
     virtual bool init();
@@ -22,6 +22,8 @@ public:
     void makeAnim(const char* str,int index);
     void aniEnd(CCObject *pSender);
     void moreGameBtnDown();
+    static bool getShitState();
+    virtual void updateEarned(int extraTime);
     
     virtual void editBoxEditingDidBegin(CCEditBox* editBox);
     virtual void editBoxEditingDidEnd(CCEditBox* editBox);
@@ -34,9 +36,9 @@ private:
     double monthPay;
     const char* name;
     double rate;
-    bool gameBegin;
     CCMenuItemLabel *moreGameBtn;
     CCNode *wordsNode;
+    static bool gameBegin;
     enum EDITBOX_TYPE{
         TYPE_NAME = 1,
         TYPE_MONTH

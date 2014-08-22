@@ -285,6 +285,8 @@
 		F0849E46195AD023008B3860 /* SlotData.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0849D68195AD023008B3860 /* SlotData.cpp */; };
 		F0849E47195AD023008B3860 /* spine-cocos2dx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0849D6A195AD023008B3860 /* spine-cocos2dx.cpp */; };
 		F093735C199DAF10001555EE /* CBScreenLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F093735A199DAF0F001555EE /* CBScreenLayer.cpp */; };
+		F09409E819A717CB00694427 /* CBBackGroundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F09409E619A717CB00694427 /* CBBackGroundManager.cpp */; };
+		F09409ED19A7309000694427 /* CBMessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F09409EB19A7308F00694427 /* CBMessageManager.cpp */; };
 		F098EB98199B4C0600CAAAB4 /* ShitLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F098EB96199B4C0600CAAAB4 /* ShitLayer.cpp */; };
 		F098EBA1199B611600CAAAB4 /* CBPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F098EB9F199B611600CAAAB4 /* CBPlatform.cpp */; };
 		F0B9B23819988FE20029C269 /* InputBg.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B9B23719988FE20029C269 /* InputBg.png */; };
@@ -896,6 +898,10 @@
 		F0849D6C195AD023008B3860 /* spine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = spine.h; sourceTree = "<group>"; };
 		F093735A199DAF0F001555EE /* CBScreenLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBScreenLayer.cpp; sourceTree = "<group>"; };
 		F093735B199DAF10001555EE /* CBScreenLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBScreenLayer.h; sourceTree = "<group>"; };
+		F09409E619A717CB00694427 /* CBBackGroundManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBBackGroundManager.cpp; sourceTree = "<group>"; };
+		F09409E719A717CB00694427 /* CBBackGroundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBackGroundManager.h; sourceTree = "<group>"; };
+		F09409EB19A7308F00694427 /* CBMessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBMessageManager.cpp; sourceTree = "<group>"; };
+		F09409EC19A7308F00694427 /* CBMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMessageManager.h; sourceTree = "<group>"; };
 		F098EB96199B4C0600CAAAB4 /* ShitLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShitLayer.cpp; sourceTree = "<group>"; };
 		F098EB97199B4C0600CAAAB4 /* ShitLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShitLayer.h; sourceTree = "<group>"; };
 		F098EB9F199B611600CAAAB4 /* CBPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPlatform.cpp; sourceTree = "<group>"; };
@@ -2229,6 +2235,10 @@
 				F0CF0FE6199C8D1100E57FED /* CBShareManager.cpp */,
 				F0CF0FE7199C8D1100E57FED /* CBShareManager.h */,
 				F0CF0FEB199C936400E57FED /* CBCommon.h */,
+				F09409E619A717CB00694427 /* CBBackGroundManager.cpp */,
+				F09409E719A717CB00694427 /* CBBackGroundManager.h */,
+				F09409EB19A7308F00694427 /* CBMessageManager.cpp */,
+				F09409EC19A7308F00694427 /* CBMessageManager.h */,
 			);
 			path = GameTools;
 			sourceTree = "<group>";
@@ -2595,6 +2605,8 @@
 				F0CF0FF5199CB69700E57FED /* CBLayer.cpp in Sources */,
 				F0CF0FF8199CBD3B00E57FED /* CBPopUpLayer.cpp in Sources */,
 				F093735C199DAF10001555EE /* CBScreenLayer.cpp in Sources */,
+				F09409E819A717CB00694427 /* CBBackGroundManager.cpp in Sources */,
+				F09409ED19A7309000694427 /* CBMessageManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

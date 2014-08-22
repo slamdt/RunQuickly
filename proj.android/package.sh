@@ -2,4 +2,5 @@
 
 sh build_native.sh
 ant release
-adb install bin/RunQuicky-release.apk
+#nice -r.be able to install without uninstalling before.
+adb install -r bin/RunQuicky-release.apk

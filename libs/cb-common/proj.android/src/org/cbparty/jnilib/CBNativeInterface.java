@@ -5,10 +5,14 @@ import java.io.File;
 import org.cocos2dx.lib.Cocos2dxActivity;
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.Uri;
 import android.os.Environment;
+import android.os.IBinder;
 import android.util.Log;
 import cn.waps.AppConnect;
 
@@ -105,12 +109,66 @@ public class CBNativeInterface {
 					}
 					
 				});
-			}
+			} else if (method.equals("enterBackGround")) {
+				CBNativeInterface.activity.runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						String innerMethod = params[0];
+						Log.d(CBNativeInterface.DEBUG_TAG," inner method is " + innerMethod);
+						if (innerMethod.equals("earnInBG")) {
+							Log.d(CBNativeInterface.DEBUG_TAG," 后台倒计时开始");
+							Intent intent = new Intent(CBNativeInterface.activity,CountTimeService.class);
+							CBNativeInterface.activity.bindService(intent, serviceConn, Context.BIND_AUTO_CREATE);
+						} else {
+							Log.d(CBNativeInterface.DEBUG_TAG," 切入后台，不倒计时");
+						}
+					}
+					
+				});
+			} else if (method.equals("enterForeGround")) {
+				CBNativeInterface.activity.runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						if (CTService != null) {
+							Log.d(CBNativeInterface.DEBUG_TAG," 进入前台，停止后台倒计时");
+							CBNativeInterface.CallCInMainThread("updateEarn", CTService.getTimeAdd() + "");
+							CBNativeInterface.activity.unbindService(serviceConn);
+						} else {
+							Log.d(CBNativeInterface.DEBUG_TAG," 进入前台，service为null");
+						}
+					} 
+					
+				});
+ 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
 	}
+	
+	private static CountTimeService  CTService = null; 
+	
+	private static ServiceConnection serviceConn = new ServiceConnection() {
+
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder bind) {
+			// TODO Auto-generated method stub
+			Log.d(DEBUG_TAG,"service connected");
+			CTService = ((CountTimeService.MyBinder)bind).getService();
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName arg0) {
+			// TODO Auto-generated method stub
+			Log.d(DEBUG_TAG,"service DisConnected");
+			CTService = null;
+		}
+		
+	};
 	
 	public static void onCreate() {
 		CBNativeInterface.activity.runOnUiThread(new Runnable() {
@@ -118,7 +176,7 @@ public class CBNativeInterface {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				AppConnect.getInstance("1e1db012fc880e5e278fca20bffc737c", "360", CBNativeInterface.activity);
+				AppConnect.getInstance(CBNativeInterface.activity);
 				AppConnect.getInstance(CBNativeInterface.activity).initPopAd(CBNativeInterface.activity);
 			}
 			
@@ -126,4 +184,18 @@ public class CBNativeInterface {
 	}
 	
 	public static native String CallC(String method, String param);
+	public static void CallCInMainThread(String method, String param) {
+		final String methodFinal = method;
+		final String paramFinal = param;
+		CBNativeInterface.activity.runOnGLThread(new Runnable() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				Log.d(DEBUG_TAG, "run in main thread");
+				CallC(methodFinal,paramFinal);
+			}
+			
+		});
+	}
 }

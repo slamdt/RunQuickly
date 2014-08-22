@@ -29,6 +29,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <meta-data 
+            android:name="APP_ID"
+            android:value="1e1db012fc880e5e278fca20bffc737c"/>
+        <meta-data 
+            android:name="APP_PID"
+            android:value="163"/>
+        
+        <service android:enabled="true"
+            android:name="org.cbparty.jnilib.CountTimeService"
+            />
     </application>
     <supports-screens android:largeScreens="true"
                       android:smallScreens="true"

@@ -11,7 +11,7 @@
 
 
 const char* arry[6] = {"拉","屎","都","能","赚","钱"};
-
+bool ShitLayer::gameBegin = false;
 bool ShitLayer::init() {
     if (!CBScreenLayer::init()) {
         return false;
@@ -19,8 +19,8 @@ bool ShitLayer::init() {
     monthPay = 0.0f;
     rate = 0.0f;
     name = "";
-    gameBegin = false;
     wordsNode = NULL;
+    CBPlatform::shared()->setPlatformDelegate(this);
     
     CCLabelTTF *title = CCLabelTTF::create("带薪嗯嗯大赛", FONT_NAME, 30);
     title->setPosition(ccp(WINSIZE.width/2,WINSIZE.height * 0.95));
@@ -95,7 +95,7 @@ bool ShitLayer::init() {
 
 void ShitLayer::beginShit() {
     if (monthPay == 0 || strcmp(name, "") == 0) {
-        CCMessageBox("逗比，先填写自己的月薪And姓名", "逗比");
+        CCMessageBox("人生赢家，先填写自己的月薪And姓名", "tips");
     } else {
         if (gameBegin)
             return;
@@ -181,7 +181,7 @@ void ShitLayer::editBoxReturn(cocos2d::extension::CCEditBox *editBox) {
         int lengh = strlen(text);
         for (int i = 0; i < lengh; i++) {
             if (text[i] < '0' || text[i] > '9') {
-                CCMessageBox("逗比，你的月薪是字符串啊，要输入数字", "erroMg");
+                CCMessageBox("人生赢家，你的月薪是字符串啊，要输入数字", "erroMg");
                 editBox->setText("");
                 return;
             }
@@ -195,4 +195,15 @@ void ShitLayer::editBoxReturn(cocos2d::extension::CCEditBox *editBox) {
 
 void ShitLayer::moreGameBtnDown() {
     CBPlatform::shared()->showAdWall();
+}
+
+bool ShitLayer::getShitState() {
+    return gameBegin;
+}
+
+void ShitLayer::updateEarned(int extraTime) {
+    CCLog("extraTime is %d",extraTime);
+    double origin = atof(monyEarn->getString());
+    origin = origin +  rate * extraTime;
+    monyEarn->setString(CCString::createWithFormat("%.4f",origin)->getCString());
 }

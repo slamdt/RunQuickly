@@ -8,10 +8,18 @@
 
 #include "ShitLayer.h"
 #include "CBShareManager.h"
+#include "Game2048Layer.h"
 
 
 const char* arry[6] = {"拉","屎","都","能","赚","钱"};
 bool ShitLayer::gameBegin = false;
+
+void ShitLayer::hehe(int *arg) {
+    int b = 110;
+    arg = &b;
+    *arg = 120;
+}
+
 bool ShitLayer::init() {
     if (!CBScreenLayer::init()) {
         return false;
@@ -21,6 +29,12 @@ bool ShitLayer::init() {
     name = "";
     wordsNode = NULL;
     CBPlatform::shared()->setPlatformDelegate(this);
+    
+    /*弄清楚c++的传址，和java的其实是一样的
+    int a = 100;
+    hehe(&a);
+    CCLOG("a is %d",a);
+    */
     
     CCLabelTTF *title = CCLabelTTF::create("带薪嗯嗯大赛", FONT_NAME, 30);
     title->setPosition(ccp(WINSIZE.width/2,WINSIZE.height * 0.95));
@@ -74,10 +88,13 @@ bool ShitLayer::init() {
     CCMenuItemLabel *endShitBtn = CCMenuItemLabel::create(CCLabelTTF::create("拉完了", FONT_NAME, 20), this, menu_selector(ShitLayer::endShit));
     endShitBtn->setPosition(ccp(WINSIZE.width * 0.7, WINSIZE.height * 0.4));
     
-    moreGameBtn = CCMenuItemLabel::create(CCLabelTTF::create("更多游戏", FONT_NAME, 30), this, menu_selector(ShitLayer::moreGameBtnDown));
+    moreGameBtn = CCMenuItemLabel::create(CCLabelTTF::create("更多游戏", FONT_NAME, 25), this, menu_selector(ShitLayer::moreGameBtnDown));
     moreGameBtn->setPosition(ccp(WINSIZE.width * 0.5, WINSIZE.height * 0.15));
     
-    CCMenu *menu = CCMenu::create(beginShitBtn,endShitBtn,moreGameBtn,NULL);
+    playWhenShitBtn = CCMenuItemLabel::create(CCLabelTTF::create("边拉边玩", FONT_NAME, 25), this, menu_selector(ShitLayer::playWhenShitBtnDown));
+    playWhenShitBtn->setPosition(ccp(WINSIZE.width * 0.5, WINSIZE.height * 0.05));
+    
+    CCMenu *menu = CCMenu::create(beginShitBtn,endShitBtn,moreGameBtn,playWhenShitBtn,NULL);
     menu->setTouchPriority(getTouchPriority());
     menu->setPosition(ccp(0, 0));
     this->addChild(menu);
@@ -121,9 +138,11 @@ void ShitLayer::endShit() {
     wordsNode->removeFromParentAndCleanup(true);
     wordsNode = NULL;
     moreGameBtn->setVisible(false);
+    playWhenShitBtn->setVisible(false);
     
     CBShareManager::shared()->shotScreen();
     moreGameBtn->setVisible(true);
+    playWhenShitBtn->setVisible(true);
     gameBegin = false;
 }
 
@@ -151,12 +170,19 @@ void ShitLayer::makeAnim(const char *str,int index) {
     CCBezierTo *beziaTo = CCBezierTo::create(1, bezier);
     word->setPosition(pos1);
     wordsNode->addChild(word);
+    word->setVisible(false);
     word->runAction(CCRotateBy::create(100, 3600));
-    word->runAction(CCSequence::create(CCDelayTime::create(index * 0.1f),beziaTo,CCCallFuncN::create(this, callfuncN_selector(ShitLayer::aniEnd)),NULL));
+    word->runAction(CCSequence::create(CCDelayTime::create(index * 0.1f),
+                                       CCCallFuncN::create(this, callfuncN_selector(ShitLayer::delayAddShit)),
+                                       beziaTo,
+                                       CCCallFuncN::create(this, callfuncN_selector(ShitLayer::aniEnd)),NULL));
 }
 
-void ShitLayer::aniEnd(cocos2d::CCObject *pSender) {
-    CCNode *node = dynamic_cast<CCNode*>(pSender);
+void ShitLayer::delayAddShit(cocos2d::CCNode *node) {
+    node->setVisible(true);
+}
+
+void ShitLayer::aniEnd(cocos2d::CCNode *node) {
     node->stopAllActions();
     node->removeFromParentAndCleanup(true);
 }
@@ -195,6 +221,15 @@ void ShitLayer::editBoxReturn(cocos2d::extension::CCEditBox *editBox) {
 
 void ShitLayer::moreGameBtnDown() {
     CBPlatform::shared()->showAdWall();
+}
+
+void ShitLayer::playWhenShitBtnDown() {
+    if (!gameBegin)
+    {
+        CCMessageBox("城步吴彦祝说", "不嗯嗯，无游戏，请先嗯嗯");
+        return;
+    }
+    GameLayer_->addChild(Game2048Layer::create());
 }
 
 bool ShitLayer::getShitState() {

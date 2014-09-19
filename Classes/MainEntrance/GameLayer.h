@@ -16,6 +16,7 @@
 #include "CBLayer.h"
 #include "CBPopUpLayer.h"
 #include "CBScreenLayer.h"
+#include "CBUtils.h"
 using namespace cocos2d;
 using namespace cocos2d::extension;
 

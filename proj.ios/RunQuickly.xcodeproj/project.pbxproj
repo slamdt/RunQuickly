@@ -287,8 +287,11 @@
 		F093735C199DAF10001555EE /* CBScreenLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F093735A199DAF0F001555EE /* CBScreenLayer.cpp */; };
 		F09409E819A717CB00694427 /* CBBackGroundManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F09409E619A717CB00694427 /* CBBackGroundManager.cpp */; };
 		F09409ED19A7309000694427 /* CBMessageManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F09409EB19A7308F00694427 /* CBMessageManager.cpp */; };
+		F0943C5C19B0616700709198 /* CBUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0943C5A19B0616700709198 /* CBUtils.cpp */; };
 		F098EB98199B4C0600CAAAB4 /* ShitLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F098EB96199B4C0600CAAAB4 /* ShitLayer.cpp */; };
 		F098EBA1199B611600CAAAB4 /* CBPlatform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F098EB9F199B611600CAAAB4 /* CBPlatform.cpp */; };
+		F0B04DEC19AF2D2700A0A10C /* Game2048Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0B04DEA19AF2D2700A0A10C /* Game2048Layer.cpp */; };
+		F0B04DF319AF3D8A00A0A10C /* Game2048Item.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0B04DF119AF3D8A00A0A10C /* Game2048Item.cpp */; };
 		F0B9B23819988FE20029C269 /* InputBg.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B9B23719988FE20029C269 /* InputBg.png */; };
 		F0CF0FE8199C8D1100E57FED /* CBShareManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0CF0FE6199C8D1100E57FED /* CBShareManager.cpp */; };
 		F0CF0FF5199CB69700E57FED /* CBLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F0CF0FF3199CB69700E57FED /* CBLayer.cpp */; };
@@ -902,6 +905,8 @@
 		F09409E719A717CB00694427 /* CBBackGroundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBBackGroundManager.h; sourceTree = "<group>"; };
 		F09409EB19A7308F00694427 /* CBMessageManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBMessageManager.cpp; sourceTree = "<group>"; };
 		F09409EC19A7308F00694427 /* CBMessageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBMessageManager.h; sourceTree = "<group>"; };
+		F0943C5A19B0616700709198 /* CBUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBUtils.cpp; sourceTree = "<group>"; };
+		F0943C5B19B0616700709198 /* CBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUtils.h; sourceTree = "<group>"; };
 		F098EB96199B4C0600CAAAB4 /* ShitLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ShitLayer.cpp; sourceTree = "<group>"; };
 		F098EB97199B4C0600CAAAB4 /* ShitLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShitLayer.h; sourceTree = "<group>"; };
 		F098EB9F199B611600CAAAB4 /* CBPlatform.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPlatform.cpp; sourceTree = "<group>"; };
@@ -909,6 +914,10 @@
 		F098EBA2199B666200CAAAB4 /* CBPlatformAndroid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CBPlatformAndroid.cpp; sourceTree = "<group>"; };
 		F098EBA6199B6BD600CAAAB4 /* org_cbparty_jnilib_CBNativeInterface.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = org_cbparty_jnilib_CBNativeInterface.cpp; sourceTree = "<group>"; };
 		F098EBA7199B6BD700CAAAB4 /* org_cbparty_jnilib_CBNativeInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = org_cbparty_jnilib_CBNativeInterface.h; sourceTree = "<group>"; };
+		F0B04DEA19AF2D2700A0A10C /* Game2048Layer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game2048Layer.cpp; sourceTree = "<group>"; };
+		F0B04DEB19AF2D2700A0A10C /* Game2048Layer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game2048Layer.h; sourceTree = "<group>"; };
+		F0B04DF119AF3D8A00A0A10C /* Game2048Item.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game2048Item.cpp; sourceTree = "<group>"; };
+		F0B04DF219AF3D8A00A0A10C /* Game2048Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game2048Item.h; sourceTree = "<group>"; };
 		F0B87077199A225800A1AEA1 /* cb_jni.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cb_jni.cpp; sourceTree = "<group>"; };
 		F0B87078199A225800A1AEA1 /* cb_jni.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cb_jni.h; sourceTree = "<group>"; };
 		F0B9B23719988FE20029C269 /* InputBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InputBg.png; sourceTree = "<group>"; };
@@ -2184,6 +2193,7 @@
 		F098EB94199B4B3600CAAAB4 /* SceneLayers */ = {
 			isa = PBXGroup;
 			children = (
+				F0B04DE819AF2D0F00A0A10C /* 2048Layer */,
 				F0CF0FF2199CB67D00E57FED /* BaseLayer */,
 				F098EB95199B4B3600CAAAB4 /* ShitLayer */,
 			);
@@ -2207,6 +2217,17 @@
 				F098EBA2199B666200CAAAB4 /* CBPlatformAndroid.cpp */,
 			);
 			path = platformImp;
+			sourceTree = "<group>";
+		};
+		F0B04DE819AF2D0F00A0A10C /* 2048Layer */ = {
+			isa = PBXGroup;
+			children = (
+				F0B04DEA19AF2D2700A0A10C /* Game2048Layer.cpp */,
+				F0B04DEB19AF2D2700A0A10C /* Game2048Layer.h */,
+				F0B04DF119AF3D8A00A0A10C /* Game2048Item.cpp */,
+				F0B04DF219AF3D8A00A0A10C /* Game2048Item.h */,
+			);
+			path = 2048Layer;
 			sourceTree = "<group>";
 		};
 		F0B87074199A216C00A1AEA1 /* cb-common */ = {
@@ -2239,6 +2260,8 @@
 				F09409E719A717CB00694427 /* CBBackGroundManager.h */,
 				F09409EB19A7308F00694427 /* CBMessageManager.cpp */,
 				F09409EC19A7308F00694427 /* CBMessageManager.h */,
+				F0943C5A19B0616700709198 /* CBUtils.cpp */,
+				F0943C5B19B0616700709198 /* CBUtils.h */,
 			);
 			path = GameTools;
 			sourceTree = "<group>";
@@ -2607,6 +2630,9 @@
 				F093735C199DAF10001555EE /* CBScreenLayer.cpp in Sources */,
 				F09409E819A717CB00694427 /* CBBackGroundManager.cpp in Sources */,
 				F09409ED19A7309000694427 /* CBMessageManager.cpp in Sources */,
+				F0B04DEC19AF2D2700A0A10C /* Game2048Layer.cpp in Sources */,
+				F0B04DF319AF3D8A00A0A10C /* Game2048Item.cpp in Sources */,
+				F0943C5C19B0616700709198 /* CBUtils.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

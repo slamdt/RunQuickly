@@ -24,6 +24,11 @@ bool shotScreenLayer::init() {
         return false;
     }
     CCSize winsize = CCDirector::sharedDirector()->getWinSize();
+    CCLabelTTF *tips = CCLabelTTF::create("毫无疑问，你就是下一个城步吴彦祖", FONT_NAME, 15);
+    tips->setPosition(ccp(winsize.width/2, winsize.height * 0.9));
+    tips->setColor(ccc3(0, 0, 0));
+    this->addChild(tips,10);
+    
     CCRenderTexture *texture = CCRenderTexture::create(winsize.width, winsize.height, kCCTexture2DPixelFormat_RGBA8888);
     texture->begin();
     CCDirector::sharedDirector()->getRunningScene()->visit();

@@ -8,7 +8,7 @@
 
 #include "ShitLayer.h"
 #include "CBShareManager.h"
-#include "Game2048Layer.h"
+#include "GameChooseLayer.h"
 
 
 const char* arry[6] = {"拉","屎","都","能","赚","钱"};
@@ -24,6 +24,9 @@ bool ShitLayer::init() {
     if (!CBScreenLayer::init()) {
         return false;
     }
+    CCLayerColor *yellowBtom = CCLayerColor::create(ccc4(200, 160, 0, 255), WINSIZE.width, WINSIZE.height);
+    this->addChild(yellowBtom);
+    
     monthPay = 0.0f;
     rate = 0.0f;
     name = "";
@@ -207,7 +210,7 @@ void ShitLayer::editBoxReturn(cocos2d::extension::CCEditBox *editBox) {
         int lengh = strlen(text);
         for (int i = 0; i < lengh; i++) {
             if (text[i] < '0' || text[i] > '9') {
-                CCMessageBox("人生赢家，你的月薪是字符串啊，要输入数字", "erroMg");
+                CCMessageBox("人生赢家，请输入数字格式的薪水！！", "erroMg");
                 editBox->setText("");
                 return;
             }
@@ -224,12 +227,16 @@ void ShitLayer::moreGameBtnDown() {
 }
 
 void ShitLayer::playWhenShitBtnDown() {
+    GameLayer_->addChild(GameChooseLayer::create());
+    return;
+    
+    
     if (!gameBegin)
     {
         CCMessageBox("城步吴彦祝说", "不嗯嗯，无游戏，请先嗯嗯");
         return;
     }
-    GameLayer_->addChild(Game2048Layer::create());
+    GameLayer_->addChild(GameChooseLayer::create());
 }
 
 bool ShitLayer::getShitState() {

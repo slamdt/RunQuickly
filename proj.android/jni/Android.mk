@@ -29,10 +29,11 @@ LOCAL_SRC_FILES := $(FILE_LIST:$(LOCAL_PATH)/%=%)
 LOCAL_C_INCLUDES :=  $(FILE_INCLUDES)
 
 
-LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static
+LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static cocosdenshion_static cocos_extension_static box2d_static
             
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,CocosDenshion/android) \
 $(call import-module,cocos2dx) \
-$(call import-module,extensions)
+$(call import-module,extensions) \
+$(call import-module,external/Box2D)

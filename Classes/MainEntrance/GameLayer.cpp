@@ -31,8 +31,6 @@ bool GameLayer::init() {
         return false;
     }
     winSize = CCDirector::sharedDirector()->getWinSize();
-    CCLayerColor *yellowBtom = CCLayerColor::create(ccc4(200, 160, 0, 255), winSize.width, winSize.height);
-    this->addChild(yellowBtom);
     
     //注册返回键监听
     cocos2d::CCDirector::sharedDirector()->getKeypadDispatcher()->addDelegate(this);
